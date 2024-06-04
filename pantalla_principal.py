@@ -16,18 +16,6 @@ def mostrar_aplicacion_casos_usos():
 
 def crear_menu(root):
     barra_menu = Menu(root, background='#3e4149', foreground='white', activebackground='#2d2f33', activeforeground='white')
-
-    menu_metricas = Menu(barra_menu, tearoff=0, background='#3e4149', foreground='white', activebackground='#2d2f33', activeforeground='white')
-    menu_metricas.add_command(label="Punto de Función", command=mostrar_punto_de_funcion)
-    menu_metricas.add_command(label="Punto de Casos de Uso", command=mostrar_aplicacion_casos_usos)  # Vincular a la nueva función
-    menu_metricas.add_command(label="Punto Objeto", command=lambda: mostrar_mensaje("Punto Objeto"))
-    menu_metricas.add_command(label="McCall", command=lambda: mostrar_mensaje("McCall"))
-    menu_metricas.add_command(label="Métricas", command=lambda: mostrar_mensaje("Métricas"))
-
-    # Agregar el menú de Métricas a la barra de menú
-    barra_menu.add_cascade(label="Métricas", menu=menu_metricas)
-
-    # Configurar la barra de menú
     root.config(menu=barra_menu)
 
 def estilo_personalizado():
@@ -68,9 +56,24 @@ def main():
     # bg_label = ttk.Label(main_frame, image=bg_image)
     # bg_label.place(relwidth=1, relheight=1)
 
+    # Marco para los botones
+    button_frame = ttk.Frame(main_frame)
+    button_frame.pack(pady=20)
+
+    # Botón de Métricas
+    metricas_button = ttk.Menubutton(button_frame, text="Métricas")
+    metricas_menu = Menu(metricas_button, tearoff=0)
+    metricas_menu.add_command(label="Punto de Función", command=mostrar_punto_de_funcion)
+    metricas_menu.add_command(label="Punto de Casos de Uso", command=mostrar_aplicacion_casos_usos)  # Vincular a la nueva función
+    metricas_menu.add_command(label="Punto Objeto", command=lambda: mostrar_mensaje("Punto Objeto"))
+    metricas_menu.add_command(label="McCall", command=lambda: mostrar_mensaje("McCall"))
+    metricas_menu.add_command(label="Métricas", command=lambda: mostrar_mensaje("Métricas"))
+    metricas_button.config(menu=metricas_menu)
+    metricas_button.pack(side="left", padx=10)
+
     # Botón de salida
-    exit_button = ttk.Button(main_frame, text="Salir", command=root.quit)
-    exit_button.pack(pady=10)
+    exit_button = ttk.Button(button_frame, text="Salir", command=root.quit)
+    exit_button.pack(side="left", padx=10)
 
     root.mainloop()
 
