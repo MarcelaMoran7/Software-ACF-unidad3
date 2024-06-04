@@ -52,7 +52,7 @@ def main():
     titulo.pack(pady=20)
 
     # Agregar una imagen de fondo (opcional)
-    # bg_image = tk.PhotoImage(file="path_to_your_image.png")  # Asegúrate de tener una imagen en la ruta especificada
+    # bg_image = tk.PhotoImage(file="no pude ponerle la imagen") 
     # bg_label = ttk.Label(main_frame, image=bg_image)
     # bg_label.place(relwidth=1, relheight=1)
 
