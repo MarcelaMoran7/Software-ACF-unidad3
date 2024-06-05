@@ -3,8 +3,6 @@ from tkinter import ttk, Menu, messagebox
 from punto_de_funcion import mostrar_punto_de_funcion
 from caso import AplicacionCasosUsos  # Importar la clase AplicacionCasosUsos
 
-# Autor: Kevin Dominguez 2024
-
 def mostrar_mensaje(metric):
     message = f"Seleccionaste {metric}"
     messagebox.showinfo("Información", message)
@@ -23,7 +21,7 @@ def estilo_personalizado():
     style.theme_use('clam')
 
     # Estilos para botones
-    style.configure('TButton', font=('Arial', 12), padding=10)
+    style.configure('TButton', font=('Arial', 12), padding=10, background='#90a4ae')  # Cambia el color de fondo de los botones
     
     # Estilos para etiquetas
     style.configure('TLabel', font=('Arial', 12))
@@ -32,10 +30,11 @@ def estilo_personalizado():
     style.configure('TFrame', background='#f0f0f0')
 
 def main():
-    global root  # Hacer root global para acceder desde la función mostrar_aplicacion_casos_usos
+    global root  # Hacer root global para mantener la referencia
     root = tk.Tk()
     root.title("Software de Métricas de Software")
     root.geometry("1200x700")
+    root.configure(bg='#3e4149')  # Establecer el fondo de color del root
 
     # Aplicar estilos personalizados
     estilo_personalizado()
@@ -46,34 +45,40 @@ def main():
     # Crear un marco principal
     main_frame = ttk.Frame(root, padding=20)
     main_frame.pack(fill="both", expand=True)
+    main_frame.configure(style='TFrame', relief='sunken')  # Establecer el fondo de color del main_frame
 
     # Agregar un título en el centro de la ventana
-    titulo = ttk.Label(main_frame, text="Bienvenido al Software de Métricas de Software", font=("Arial", 24))
+    titulo = ttk.Label(main_frame, text="Bienvenido al Software de Métricas de Software", font=("Arial", 24), background='#257485', foreground='white')
     titulo.pack(pady=20)
-
-    # Agregar una imagen de fondo (opcional)
-    # bg_image = tk.PhotoImage(file="no pude ponerle la imagen") 
-    # bg_label = ttk.Label(main_frame, image=bg_image)
-    # bg_label.place(relwidth=1, relheight=1)
 
     # Marco para los botones
     button_frame = ttk.Frame(main_frame)
     button_frame.pack(pady=20)
+    button_frame.configure(style='TFrame', relief='sunken')  # Establecer el fondo de color del button_frame
+
+    # Botón de Punto de Función
+    punto_funcion_button = ttk.Button(button_frame, text="Punto de Función", command=mostrar_punto_de_funcion)
+    punto_funcion_button.grid(row=0, column=0, padx=10, pady=10)
+
+    # Botón de Punto de Casos de Uso
+    punto_casos_uso_button = ttk.Button(button_frame, text="Punto de Casos de Uso", command=mostrar_aplicacion_casos_usos)
+    punto_casos_uso_button.grid(row=0, column=1, padx=10, pady=10)
+
+    # Botón de Punto Objeto
+    punto_objeto_button = ttk.Button(button_frame, text="Punto Objeto", command=lambda: mostrar_mensaje("Punto Objeto"))
+    punto_objeto_button.grid(row=1, column=0, padx=10, pady=10)
+
+    # Botón de McCall
+    mccall_button = ttk.Button(button_frame, text="McCall", command=lambda: mostrar_mensaje("McCall"))
+    mccall_button.grid(row=1, column=1, padx=10, pady=10)
 
     # Botón de Métricas
-    metricas_button = ttk.Menubutton(button_frame, text="Métricas")
-    metricas_menu = Menu(metricas_button, tearoff=0)
-    metricas_menu.add_command(label="Punto de Función", command=mostrar_punto_de_funcion)
-    metricas_menu.add_command(label="Punto de Casos de Uso", command=mostrar_aplicacion_casos_usos)  # Vincular a la nueva función
-    metricas_menu.add_command(label="Punto Objeto", command=lambda: mostrar_mensaje("Punto Objeto"))
-    metricas_menu.add_command(label="McCall", command=lambda: mostrar_mensaje("McCall"))
-    metricas_menu.add_command(label="Métricas", command=lambda: mostrar_mensaje("Métricas"))
-    metricas_button.config(menu=metricas_menu)
-    metricas_button.pack(side="left", padx=10)
+    metricas_button = ttk.Button(button_frame, text="Métricas", command=lambda: mostrar_mensaje("Métricas"))
+    metricas_button.grid(row=2, column=0, padx=10, pady=10)
 
     # Botón de salida
     exit_button = ttk.Button(button_frame, text="Salir", command=root.quit)
-    exit_button.pack(side="left", padx=10)
+    exit_button.grid(row=2, column=1, padx=10, pady=10)
 
     root.mainloop()
 
