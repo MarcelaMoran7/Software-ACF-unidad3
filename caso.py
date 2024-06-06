@@ -8,7 +8,7 @@ class AplicacionCasosUsos:
     def __init__(self, root):
         self.root = root
         self.root.title("Estimación de Puntos de Objeto")
-        self.root.geometry("1000x800")  # Tamaño de la ventana ajustado
+        self.root.geometry("700x900")  # Tamaño de la ventana ajustado
 
         # Crear un canvas y un scrollbar
         self.canvas = tk.Canvas(root)
