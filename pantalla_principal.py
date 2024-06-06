@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import ttk, Menu, messagebox
 from punto_de_funcion import mostrar_punto_de_funcion
 from caso import AplicacionCasosUsos  # Importar la clase AplicacionCasosUsos
+from mcCall import EstimadorMcCall  # Importar la clase EstimadorMcCall
+from puntoObjeto import AplicacionPuntosObjeto  # Importar la clase AplicacionPuntosObjeto
 
 def mostrar_mensaje(metric):
     message = f"Seleccionaste {metric}"
@@ -11,6 +13,15 @@ def mostrar_aplicacion_casos_usos():
     # Crear una nueva ventana para la aplicación de casos de uso
     new_window = tk.Toplevel(root)
     app = AplicacionCasosUsos(new_window)
+
+def mostrar_estimador_mccall():
+    # Crear una instancia de EstimadorMcCall
+    app = EstimadorMcCall()
+
+def mostrar_puntos_objeto():
+    # Crear una nueva ventana para la aplicación de puntos objeto
+    new_window = tk.Toplevel(root)
+    app = AplicacionPuntosObjeto(new_window)
 
 def crear_menu(root):
     barra_menu = Menu(root, background='#3e4149', foreground='white', activebackground='#2d2f33', activeforeground='white')
@@ -65,11 +76,11 @@ def main():
     punto_casos_uso_button.grid(row=0, column=1, padx=10, pady=10)
 
     # Botón de Punto Objeto
-    punto_objeto_button = ttk.Button(button_frame, text="Punto Objeto", command=lambda: mostrar_mensaje("Punto Objeto"))
+    punto_objeto_button = ttk.Button(button_frame, text="Punto Objeto", command=mostrar_puntos_objeto)
     punto_objeto_button.grid(row=1, column=0, padx=10, pady=10)
 
     # Botón de McCall
-    mccall_button = ttk.Button(button_frame, text="McCall", command=lambda: mostrar_mensaje("McCall"))
+    mccall_button = ttk.Button(button_frame, text="McCall", command=mostrar_estimador_mccall)
     mccall_button.grid(row=1, column=1, padx=10, pady=10)
 
     # Botón de Métricas
