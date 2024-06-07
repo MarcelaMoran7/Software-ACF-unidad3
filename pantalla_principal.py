@@ -59,7 +59,7 @@ def main():
     main_frame.configure(style='TFrame', relief='sunken')  # Establecer el fondo de color del main_frame
 
     # Agregar un título en el centro de la ventana
-    titulo = ttk.Label(main_frame, text="Bienvenido al Software de Métricas de Software", font=("Arial", 24), background='#257485', foreground='white')
+    titulo = ttk.Label(main_frame, text="Bienvenido al Software de Metodos de estimacion", font=("Arial", 24), background='#257485', foreground='white')
     titulo.pack(pady=20)
 
     # Marco para los botones
