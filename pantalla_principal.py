@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, Menu, messagebox
-from punto_de_funcion import mostrar_punto_de_funcion
+from punto_funcion import PuntoDeFuncion #Importar la clase PuntoDeFuncion
 from caso import AplicacionCasosUsos  # Importar la clase AplicacionCasosUsos
 from mcCall import EstimadorMcCall  # Importar la clase EstimadorMcCall
 from puntoObjeto import AplicacionPuntosObjeto  # Importar la clase AplicacionPuntosObjeto
@@ -68,7 +68,7 @@ def main():
     button_frame.configure(style='TFrame', relief='sunken')  # Establecer el fondo de color del button_frame
 
     # Botón de Punto de Función
-    punto_funcion_button = ttk.Button(button_frame, text="Punto de Función", command=mostrar_punto_de_funcion)
+    punto_funcion_button = ttk.Button(button_frame, text="Punto de Función", command=PuntoDeFuncion)
     punto_funcion_button.grid(row=0, column=0, padx=10, pady=10)
 
     # Botón de Punto de Casos de Uso
