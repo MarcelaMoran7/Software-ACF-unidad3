@@ -85,11 +85,11 @@ def main():
     punto_objeto_button.grid(row=1, column=0, padx=10, pady=10)
 
     # Botón de McCall
-    mccall_button = ttk.Button(button_frame, text="McCall", command=mostrar_estimador_mccall)
+    mccall_button = ttk.Button(button_frame, text="Metricas McCall", command=mostrar_estimador_mccall)
     mccall_button.grid(row=1, column=1, padx=10, pady=10)
 
     # Botón de Métricas
-    metricas_button = ttk.Button(button_frame, text="Métricas", command=mostrar_metodo_cosmic)
+    metricas_button = ttk.Button(button_frame, text="Métricas Cosmic", command=mostrar_metodo_cosmic)
     metricas_button.grid(row=2, column=0, padx=10, pady=10)
 
     # Botón de salida
