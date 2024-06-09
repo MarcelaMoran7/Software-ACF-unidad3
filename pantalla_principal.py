@@ -3,11 +3,16 @@ from tkinter import ttk, Menu, messagebox
 from punto_funcion import PuntoDeFuncion #Importar la clase PuntoDeFuncion
 from caso import AplicacionCasosUsos  # Importar la clase AplicacionCasosUsos
 from mcCall import EstimadorMcCall  # Importar la clase EstimadorMcCall
-from puntoObjeto import AplicacionPuntosObjeto  # Importar la clase AplicacionPuntosObjeto
+from puntoObjeto import AplicacionPuntosObjeto  # Importar la clase 
+from cosmic import CosmicCalculator
 
 def mostrar_mensaje(metric):
     message = f"Seleccionaste {metric}"
     messagebox.showinfo("Información", message)
+    
+def mostrar_metodo_cosmic():
+     new_window = tk.Toplevel(root)
+     app = CosmicCalculator(new_window)
 
 def mostrar_aplicacion_casos_usos():
     # Crear una nueva ventana para la aplicación de casos de uso
@@ -84,7 +89,7 @@ def main():
     mccall_button.grid(row=1, column=1, padx=10, pady=10)
 
     # Botón de Métricas
-    metricas_button = ttk.Button(button_frame, text="Métricas", command=lambda: mostrar_mensaje("Métricas"))
+    metricas_button = ttk.Button(button_frame, text="Métricas", command=mostrar_metodo_cosmic)
     metricas_button.grid(row=2, column=0, padx=10, pady=10)
 
     # Botón de salida
